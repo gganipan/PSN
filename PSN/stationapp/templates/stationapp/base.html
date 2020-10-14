@@ -15,22 +15,37 @@
   <body>
 
     <nav class="navbar navbar-expand-lg" style="background-color:	#042f66;">
-      <div class="container-fluid" >
-        <div class="navbar-nav align-items-center" >
-          <a class="navbar-brand" href="{% url 'station_list' %}">
-          <img src="{% static "stationapp/dost.png" %}" width="30" height="31" alt="" loading="lazy">
-          </a>
-          <a class="navbar-brand" href="{% url 'station_list' %}">
-          <img src="{% static "stationapp/Phivolcs.png" %}" width="27" height="27" alt="" loading="lazy">
-          </a>
-          <a class="navbar-brand bigbrand text-white" href="{% url 'station_list' %}">Philippine Seismic Network</a>
+      <nav class="flex-column flex-sm-row">
+
+      <a class="navbar-brand" href="{% url 'station_list' %}">
+      <img src="{% static "stationapp/dost.png" %}" width="30" height="31" alt="" loading="lazy">
+      </a>
+      <a class="navbar-brand" href="{% url 'station_list' %}">
+      <img src="{% static "stationapp/Phivolcs.png" %}" width="27" height="27" alt="" loading="lazy">
+      </a>
+      <a class="navbar-brand bigbrand text-white" href="{% url 'station_list' %}">Philippine Seismic Network</a>
+      </nav>
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- This is the actual code that creates the "hamburger icon" -->
+      <!-- The data-target grabs ids to put into the icon -->
+      <button class=" navbar-light bg-light navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-nav">
           <a class="nav-item nav-link text-white" href="{% url 'station_scss_list' %}">SCSS</a>
           <a class="nav-item nav-link text-white" href="{% url 'station_stss_list' %}">STSS</a>
           <a class="nav-item nav-link text-white" href="{% url 'stnd' %}">STND</a>
           <a class="nav-item nav-link text-white" href="{% url 'admin:index' %}">Admin</a>
 
-        </div>
-        <div class="navbar-nav align-items-center ml-auto">
+        </div> <!-- /.navbar-nav, left-hand content -->
+
+        <!-- STUFF ON THE RIGHT -->
+        <div class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
             <a class="nav-item nav-link text-white" href="{% url 'logout' %}">Log out</a>
             <a class="nav-item nav-link text-white" href="{% url 'station_new' %}">Add Station</a>
@@ -38,8 +53,9 @@
           {% else %}
             <a class="nav-item nav-link text-white" href="{% url 'login' %}" aria-label="Login">Login</a>
           {% endif %}
-        </div>
-      <!-- </div> -->
+        </div> <!-- /.navbar-nav, right-hand content -->
+
+      </div> <!-- /.navbar-collapse -->
     </nav>
 
 <h2>Seismology Operations Earthquake Prediction Detection</h2>
@@ -58,6 +74,10 @@
     <a href="https://www.facebook.com/PHIVOLCS/"><i class="fa fa-facebook-square" style="font-size:36px; color:white;"></i></a>
     <a href="https://twitter.com/phivolcs_dost"><i class="fa fa-twitter-square" style="font-size:36px; color:white; padding-left:10px"></i></a>
     <a href="https://earthquake.phivolcs.dost.gov.ph/"><i class="fa fa-chrome" style="font-size:36px; color:white; padding-left:10px"></i></a>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </div>
 
