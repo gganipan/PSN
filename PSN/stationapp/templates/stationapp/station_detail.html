@@ -1,0 +1,60 @@
+{% extends 'stationapp/base.html'%}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <h1 class="posttitle">{{ station }}</h1>
+  <p class="postcontent"> {{ station.location }}</p>
+
+<div class="row">
+<div class="container col-sm-12 col-lg-6">
+  <h4>Device Model:</h4>
+  <p class="postcontent"> <b>sensor: </b>{{ station.sensor_model }}</p>
+  <p class="postcontent"> <b>transceiver: </b>{{ station.transceiver_model }}</p>
+</div>
+
+<div class="container col-sm-12 col-lg-6">
+  <h4>Serial Numbers:</h4>
+  <p class="postcontent"> <b>sensor: </b>{{ station.sensor_sn }}</p>
+  <p class="postcontent"> <b>digitizer: </b>{{ station.digitizer_sn }}</p>
+  <p class="postcontent"> <b>lnb: </b>{{ station.lnb_sn }}</p>
+  <p class="postcontent"> <b>sspb: </b>{{ station.sspb_sn }}</p>
+</div>
+
+</div>
+
+<hr>
+<a class="btn btn-primary btn-comment" href="{% url 'add_history_to_station' pk=station.pk %}">Add Repair History</a>
+<div class="container">
+
+{% for history in station.histories.all %}
+
+  {{ history.repair_date }}
+  <p>{{ history.text|safe|linebreaks }}</p>
+  <p>Repair by: <strong>{{ history.personnel }}</strong></p>
+
+{% empty %}
+  <p>No repair yet.</p>
+{%endfor%}
+</div>
+
+<hr>
+<a class="btn btn-primary btn-comment" href="{% url 'add_repair_report' pk=station.pk %}">Add Repair Request</a>
+<div class="container">
+
+{% for repair in station.repair_requests.all %}
+
+  <a href="{% url 'repair_report_detail' pk=repair.pk %} ">{{ repair }}</a>
+  <p>Request by: <strong>{{ repair.personnel }}</strong></p>
+
+{% empty %}
+<p>No request yet.</p>
+{%endfor%}
+
+</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'stationapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron" style="background-image:url({%static "stationapp/bg.png"%}); background-size: cover;">
+<div class="container-fluid">
+
+<h3>Seismic Stations:</h3>
+<h6>Station count: 105 {{ byte }} </h6>
+<hr>
+
+  <div class="container">
+  <div class="row">
+
+    {% for station in station_list %}
+
+        <div class="post col-sm-12 col-lg-4">
+          <h1><a href="{% url 'station_detail' pk=station.pk %}" class="text-dark">{{ station }}</a></h1>
+        </div>
+
+    {% endfor %}
+
+  </div>
+  </div>
+
+</div>
+</div>
+{% endblock %}

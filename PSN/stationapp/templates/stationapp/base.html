@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PSN Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/stationapp.css' %}">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg" style="background-color:	#042f66;">
+      <div class="container-fluid" >
+        <div class="navbar-nav align-items-center" >
+          <a class="navbar-brand" href="{% url 'station_list' %}">
+          <img src="{% static "stationapp/dost.png" %}" width="30" height="31" alt="" loading="lazy">
+          </a>
+          <a class="navbar-brand" href="{% url 'station_list' %}">
+          <img src="{% static "stationapp/Phivolcs.png" %}" width="27" height="27" alt="" loading="lazy">
+          </a>
+          <a class="navbar-brand bigbrand text-white" href="{% url 'station_list' %}">Philippine Seismic Network</a>
+          <a class="nav-item nav-link text-white" href="{% url 'station_scss_list' %}">SCSS</a>
+          <a class="nav-item nav-link text-white" href="{% url 'station_stss_list' %}">STSS</a>
+          <a class="nav-item nav-link text-white" href="{% url 'stnd' %}">STND</a>
+          <a class="nav-item nav-link text-white" href="{% url 'admin:index' %}">Admin</a>
+
+        </div>
+        <div class="navbar-nav align-items-center ml-auto">
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link text-white" href="{% url 'logout' %}">Log out</a>
+            <a class="nav-item nav-link text-white" href="{% url 'station_new' %}">Add Station</a>
+            <a  class="text-muted">Welcome: {{ user.username }}</a>
+          {% else %}
+            <a class="nav-item nav-link text-white" href="{% url 'login' %}" aria-label="Login">Login</a>
+          {% endif %}
+        </div>
+      <!-- </div> -->
+    </nav>
+
+<h2>Seismology Operations Earthquake Prediction Detection</h2>
+    {% block content %}
+    {% endblock %}
+
+<div class="container-fluid" style="background-color:	#042f66; padding-top:20px; padding-bottom:20px">
+
+    <h6 class="text-white">Department of Science and technology</h6>
+    <h5 class="text-white">Philippine Institute of Volcanology and Seismology</h5>
+    <p class="text-white">
+    PHIVOLCS Building, C.P. Garcia Avenue, U.P.- Diliman, Quezon City, PHILIPPINES <br>
+    Tel.: 8426-1468 <br>
+    Fax: 8927-1087
+    </p>
+    <a href="https://www.facebook.com/PHIVOLCS/"><i class="fa fa-facebook-square" style="font-size:36px; color:white;"></i></a>
+    <a href="https://twitter.com/phivolcs_dost"><i class="fa fa-twitter-square" style="font-size:36px; color:white; padding-left:10px"></i></a>
+    <a href="https://earthquake.phivolcs.dost.gov.ph/"><i class="fa fa-chrome" style="font-size:36px; color:white; padding-left:10px"></i></a>
+
+</div>
+
+  </body>
+</html>
