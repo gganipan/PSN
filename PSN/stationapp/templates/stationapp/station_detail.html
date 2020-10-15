@@ -5,17 +5,21 @@
 
 <div class="jumbotron">
   <h1 class="posttitle">{{ station }}</h1>
-  <p class="postcontent"> {{ station.location }}</p>
+  <p class="postcontent"> <b>{{ station.location }}</b></p>
+  <p class="postcontent"> <b>Installed on: </b>{{ station.installation_date }}</p>
+  <p class="postcontent"> <b>Battery deployed on: </b>{{ station.battery_start_date }}</p>
 
 <div class="row">
 <div class="container col-sm-12 col-lg-6">
   <h4>Device Model:</h4>
   <p class="postcontent"> <b>sensor: </b>{{ station.sensor_model }}</p>
   <p class="postcontent"> <b>transceiver: </b>{{ station.transceiver_model }}</p>
+
 </div>
 
 <div class="container col-sm-12 col-lg-6">
   <h4>Serial Numbers:</h4>
+  <p class="postcontent"> <b>transceiver: </b>{{ station.transceiver_sn }}</p>
   <p class="postcontent"> <b>sensor: </b>{{ station.sensor_sn }}</p>
   <p class="postcontent"> <b>digitizer: </b>{{ station.digitizer_sn }}</p>
   <p class="postcontent"> <b>lnb: </b>{{ station.lnb_sn }}</p>

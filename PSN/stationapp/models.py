@@ -6,12 +6,16 @@ from django.utils import timezone
 class Station(models.Model):
     code = models.CharField(max_length=4,null='False',default='XXXX')
     location = models.CharField(max_length=200,null='False', default='Phivolcs bldg, C.P. Garcia St., Diliman, Q.C')
+    installation_date = models.DateField(blank=True, default=timezone.now)
     sensor_model = models.CharField(max_length=50,null='False',default='Trillium120')
     transceiver_model = models.CharField(max_length=50,null='False',default='Cygnus205')
+    battery_start_date = models.DateField(blank=True, default=timezone.now)
+
     sensor_sn = models.CharField(max_length=50,null='False',default='0000')
     digitizer_sn = models.CharField(max_length=50,null='False',default='0000')
     lnb_sn = models.CharField(max_length=50,null='False',default='0000')
     sspb_sn = models.CharField(max_length=50,null='False',default='0000')
+    transceiver_sn = models.CharField(max_length=50,null='False',default='0000')
 
     def post(self):
         self.save()

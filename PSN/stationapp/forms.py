@@ -5,12 +5,20 @@ class StationForm(forms.ModelForm):
 
     class Meta:
         model = Station
-        fields = ('code', 'location', 'sensor_model')
+        fields = ('code', 'location', 'sensor_model', 'installation_date', 'transceiver_model', 'sensor_sn', 'digitizer_sn', 'lnb_sn', 'sspb_sn', 'transceiver_sn', 'battery_start_date')
 
         widgets = {
             'code':forms.TextInput(attrs={'class': 'textinputclass'}),
             'location': forms.TextInput(attrs={'class': 'textinputclass'}),
             'sensor_model': forms.TextInput(attrs={'class': 'textinputclass'}),
+            'installation_date': forms.SelectDateWidget(),
+            'transceiver_model': forms.TextInput(attrs={'class': 'textinputclass'}),
+            'sensor_sn':forms.TextInput(attrs={'class': 'textinputclass'}),
+            'digitizer_sn':forms.TextInput(attrs={'class': 'textinputclass'}),
+            'lnb_sn':forms.TextInput(attrs={'class': 'textinputclass'}),
+            'sspb_sn':forms.TextInput(attrs={'class': 'textinputclass'}),
+            'transceiver_sn':forms.TextInput(attrs={'class': 'textinputclass'}),
+            'battery_start_date': forms.SelectDateWidget(),
         }
 
 class HistoryForm(forms.ModelForm):
